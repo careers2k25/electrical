@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile - WattEdge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="bg-white p-5 shadow rounded text-center">
+        <h1 class="text-primary mb-4">Welcome to Your Profile</h1>
+        <img src="https://via.placeholder.com/100" class="rounded-circle mb-3" alt="Profile Picture">
+        <h3 id="fullName" class="mb-2"></h3>
+        <p id="userEmail" class="text-muted"></p>
+        <a href="index.html" class="btn btn-outline-primary mt-4">Back to Home</a>
+    </div>
+</div>
+
+<script>
+    // Get user data from localStorage
+    const user = JSON.parse(localStorage.getItem("userProfile"));
+
+    if (user) {
+        document.getElementById("fullName").textContent = `${user.firstName} ${user.lastName}`;
+        document.getElementById("userEmail").textContent = user.email;
+    } else {
+        document.querySelector('.container').innerHTML = `
+            <div class="alert alert-danger text-center">No user data found. Please <a href="register.html">register</a> first.</div>
+        `;
+    }
+</script>
+
+</body>
+</html>
